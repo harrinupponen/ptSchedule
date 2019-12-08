@@ -10,11 +10,10 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 const Addtraining = (props) => {
 
     const [open, setOpen] = useState(false);
-    const [training, setTraining] = useState(
-        {}
-    )
+    const [training, setTraining] = useState({date:'', activity:'', duration:'', customer:''});
 
     const handleClickOpen = () => {
+        setTraining({...training, customer: props.customer.links[0].href})
         setOpen(true);
       };
     
@@ -23,18 +22,17 @@ const Addtraining = (props) => {
       };
 
       const handleChange = (event) => {
-          setTraining({...training, [event.target.name]: event.target.value})
+        setTraining({...training, [event.target.name]: event.target.value})
       }
 
       const addTraining = () => {
-          props.saveTraining(training);
+          props.saveTraining({...training, date: `${training.date}:00.000+02:00`})
           handleClose();
-          setTraining({})
       }
 
     return (
         <div>
-           <Button style={{margin: 20}} variant="outlined" color="primary" onClick={handleClickOpen}>
+           <Button color="primary" size="small" onClick={handleClickOpen}>
         Add New Training
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -45,10 +43,12 @@ const Addtraining = (props) => {
           </DialogContentText>
           <TextField
             autoFocus
+            id="datetime-local"
             margin="dense"
             name="date"
-            value={training.date}
+            type="datetime-local"
             onChange={e => handleChange(e)}
+            value={training.date}
             label="Date"
             fullWidth
           />
@@ -66,14 +66,6 @@ const Addtraining = (props) => {
             value={training.activity}
             onChange={e => handleChange(e)}
             label="Activity"
-            fullWidth
-          />
-          <TextField
-            margin="dense"
-            name="customer"
-            value={training.customer}
-            onChange={e => handleChange(e)}
-            label="Customer"
             fullWidth
           />
         </DialogContent>

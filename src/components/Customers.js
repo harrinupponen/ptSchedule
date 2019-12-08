@@ -6,6 +6,8 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Addcustomer from './Addcustomer';
 import Editcustomer from './Editcustomer';
 import Grid from '@material-ui/core/Grid';
+import {Redirect} from 'react-router-dom';
+import Addtraining from './Addtraining';
 
 const Customers = () => {
 
@@ -66,6 +68,23 @@ const Customers = () => {
         .catch(err => console.error(err))
       }
 
+                 //------ TO BE COMLETED----------------
+    const saveTraining = (newTraining) => {
+        fetch('https://customerrest.herokuapp.com/api/trainings',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newTraining)
+        }
+        )
+       // .then(<Redirect to="/trainings" />)
+        .catch(err => console.error(err))
+    }
+
+                //----------------------------
+
     const columns= [
         {
             Header: 'Firstname',
@@ -104,7 +123,12 @@ const Customers = () => {
             accessor: 'links[0].href',
             filterable: false,
             sortable: false,
-            Cell: ({value}) => <Button color="secondary" size="medium" onClick={() => deleteCustomer(value)}>Delete</Button>
+            Cell: ({value}) => <Button color="secondary" size="small" onClick={() => deleteCustomer(value)}>Delete</Button>
+        },
+        {
+            filterable: false,
+            sortable: false,
+            Cell: row => <Addtraining saveTraining={saveTraining} customer={row.original}/>
         }
     ]
 
@@ -116,7 +140,7 @@ const Customers = () => {
                 </Grid>
             </Grid>
             <ReactTable columns={columns} data={customers} filterable={true}/>
-            <Snackbar open={open} autoHideDuration={4000} onClose={handleClose} message={message}/>
+            <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} message={message}/>
         </div>
     );
 };

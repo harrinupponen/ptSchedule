@@ -4,7 +4,7 @@ import {
     Route,
     Switch,
   } from 'react-router-dom';
-  import Home from './Home';
+  import CalendarPage from './CalendarPage';
   import Customers from './Customers';
   import Trainings from './Trainings'
   import Navigator from './Navigator';
@@ -16,7 +16,7 @@ const Router = () => {
             <div>
                 <Navigator/>
                 <Switch>
-                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/" component={CalendarPage}/>
                     <Route path="/customers" component={Customers}/>
                     <Route path="/trainings" component={Trainings}/>
                     <Route render={() => <h1>Page not found</h1>}/>
