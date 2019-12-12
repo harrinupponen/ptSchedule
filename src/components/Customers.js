@@ -8,6 +8,9 @@ import Editcustomer from './Editcustomer';
 import Grid from '@material-ui/core/Grid';
 import {Redirect} from 'react-router-dom';
 import Addtraining from './Addtraining';
+import Fab from '@material-ui/core/Fab';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const Customers = () => {
 
@@ -123,7 +126,11 @@ const Customers = () => {
             accessor: 'links[0].href',
             filterable: false,
             sortable: false,
-            Cell: ({value}) => <Button color="secondary" size="small" onClick={() => deleteCustomer(value)}>Delete</Button>
+            Cell: ({value}) => <Tooltip title="Delete Customer"><Fab
+            variant="contained" color="secondary" size="small" onClick={() => deleteCustomer(value)}>
+            <DeleteIcon/>
+            </Fab>
+            </Tooltip>
         },
         {
             filterable: false,

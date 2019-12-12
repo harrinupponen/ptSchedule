@@ -6,6 +6,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const Addcustomer = (props) => {
 
@@ -34,9 +37,11 @@ const Addcustomer = (props) => {
 
     return (
         <div>
-           <Button style={{margin: 20}} variant="outlined" color="primary" onClick={handleClickOpen}>
-        Add New Customer
-      </Button>
+      <Tooltip title="Add New Customer"> 
+      <Fab color="primary" aria-label="add" onClick={handleClickOpen}>
+        <AddIcon />
+      </Fab>
+      </Tooltip> 
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Add new customer</DialogTitle>
         <DialogContent>

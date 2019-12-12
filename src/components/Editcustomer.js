@@ -6,6 +6,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Fab from '@material-ui/core/Fab';
+import EditIcon from '@material-ui/icons/Edit';
+import { Tooltip } from '@material-ui/core';
 
 const Editcustomer = (props) => {
 
@@ -35,9 +38,11 @@ const Editcustomer = (props) => {
 
     return (
         <div>
-           <Button color="primary" size="small" onClick={handleClickOpen}>
-        Edit Customer
-      </Button>
+          <Tooltip title="Edit Customer">
+           <Fab size="small" color="primary" aria-label="edit" onClick={handleClickOpen}>
+        <EditIcon />
+      </Fab>
+      </Tooltip>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Edit Customer</DialogTitle>
         <DialogContent>

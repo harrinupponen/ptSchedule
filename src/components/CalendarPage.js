@@ -18,14 +18,27 @@ const CalendarPage = () => {
         .then(data => setTrainings(data))
         .catch(err => console.error(err))
     }
+    
+    const events = trainings.map(tr => {
+      let date = new Date(tr.date)
+      
+      const eventsDetails = {
+          start: date,
+          end: new Date(moment(date).add(tr.duration, "minutes")),
+          title: tr.activity
+      }
+
+      return eventsDetails
+  })
 
   return(
     <Calendar
       localizer={localizer}
-      events={trainings}
+      events={events}
       startAccessor="start"
       endAccessor="end"
-      style={{height: 500}}
+      defaultView="week"
+      style={{height: 600}}
     />
   )
   }

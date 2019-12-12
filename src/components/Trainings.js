@@ -5,6 +5,9 @@ import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import Grid from '@material-ui/core/Grid';
 import moment from 'moment';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Tooltip from '@material-ui/core/Tooltip';
+import Fab from '@material-ui/core/Fab';
 
 const Trainings = () => {
 
@@ -17,9 +20,9 @@ const Trainings = () => {
     }, [])
 
     const fetchTrainings = () => {
-        fetch('https://customerrest.herokuapp.com/api/trainings')
+        fetch('https://customerrest.herokuapp.com/gettrainings')
         .then(response => response.json())
-        .then(data => setTrainings(data.content))
+        .then(data => setTrainings(data))
         .catch(err => console.error(err))
     }
 
@@ -36,6 +39,8 @@ const Trainings = () => {
     const handleClose = (event, reason) => {
         setOpen(false);
       }
+
+    const deleteUrl = "https://customerrest.herokuapp.com/api/trainings";
 
     const columns= [
         {
@@ -58,14 +63,20 @@ const Trainings = () => {
             id: "getFNameAndLName",
             Header: 'Customer',
             accessor: name => {
-                return name.firstname + " " + name.lastname
+                return name.customer.firstname + " " + name.customer.lastname
             }
         },
         {
-            accessor: 'links[0].href',
+            accessor: '',
             filterable: false,
             sortable: false,
-            Cell: ({value}) => <Button color="secondary" size="small" onClick={() => deleteTraining(value)}>Delete</Button>
+            Cell: row => 
+            <Tooltip title="Delete Training">
+            <Fab variant="contained" color="secondary" size="small" 
+            onClick={() => deleteTraining(`${deleteUrl}/${row.original.id}`)}>
+            <DeleteIcon/>
+            </Fab>
+            </Tooltip>
         }
     ]
 

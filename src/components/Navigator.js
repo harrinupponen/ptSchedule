@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {Link} from 'react-router-dom';
 
 const Navigator = () => {
@@ -6,8 +6,7 @@ const Navigator = () => {
         
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <button className="navbar-toggler navbar-toggler-right" type="button"
-            data-toggle="collapse" data-target="#navbarSupportedContent"aria-
-            controls="navbarSupportedContent" aria-expanded="false" 
+            data-toggle="collapse" data-target="#navbarSupportedContent"aria-controls="navbarSupportedContent" aria-expanded="false" 
             aria-label="Togglenavigation"><span className="navbar-toggler-icon"></span>
             </button>
             <Link className="navbar-brand" to="/" >Personal Trainer Schedule</Link>

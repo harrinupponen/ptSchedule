@@ -6,6 +6,10 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Tooltip from '@material-ui/core/Tooltip';
+import Fab from '@material-ui/core/Fab';
+import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
+import DiscreteSlider from './SliderControl';
 
 const Addtraining = (props) => {
 
@@ -32,9 +36,11 @@ const Addtraining = (props) => {
 
     return (
         <div>
-           <Button color="primary" size="small" onClick={handleClickOpen}>
-        Add New Training
-      </Button>
+            <Tooltip title="Add Training">
+           <Fab variant="contained" color="primary" size="small" onClick={handleClickOpen}>
+           <DirectionsRunIcon/>
+           </Fab>
+           </Tooltip>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Add new training</DialogTitle>
         <DialogContent>
@@ -52,12 +58,9 @@ const Addtraining = (props) => {
             label="Date"
             fullWidth
           />
-          <TextField
-            margin="dense"
-            name="duration"
+          <DiscreteSlider training={training} setTraining={setTraining}
+            margin='dense'
             value={training.duration}
-            onChange={e => handleChange(e)}
-            label="Duration"
             fullWidth
           />
           <TextField
