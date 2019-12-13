@@ -38,7 +38,7 @@ const CalendarPage = () => {
       startAccessor="start"
       endAccessor="end"
       defaultView="week"
-      style={{height: 600}}
+      style={{height: 500}}
     />
   )
   }
