@@ -19,7 +19,7 @@ const Router = () => {
                     <Route exact path="/" component={CalendarPage}/>
                     <Route path="/customers" component={Customers}/>
                     <Route path="/trainings" component={Trainings}/>
-                    <Route render={() => <h1>Page not found</h1>}/>
+                    
                 </Switch>
             </div>
         </BrowserRouter>

@@ -8,17 +8,18 @@
     "@material-ui/icons": "^4.5.1",
     "@use-firebase/auth": "^0.3.3",
     "bootstrap": "^4.3.1",
-    "material-ui-pickers": "^2.2.4",
     "moment": "^2.24.0",
     "react": "^16.11.0",
     "react-big-calendar": "^0.23.0",
-    "react-datetime-picker": "^2.8.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "react-table": "^6.10.3",
     "react-with-firebase-auth": "^1.2.0"
   },
+  "engines" : {
+     "node" : "10.16.3" 
+    },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

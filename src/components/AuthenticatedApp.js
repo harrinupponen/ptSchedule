@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFirebaseAuth } from '@use-firebase/auth';
 import Router from './Router';
+import Button from '@material-ui/core/Button';
 
 const AuthenticatedApp = () => {
   const { user, signOut } = useFirebaseAuth();
@@ -13,7 +14,7 @@ const AuthenticatedApp = () => {
         <img className="avatar" alt={displayName} src={photoURL} />
       </div> */}
       <p>
-        <button onClick={signOut}>Sign Out</button>
+        <Button variant="contained" color="primary" size="big" onClick={signOut}>Sign Out</Button>
       </p>
       <Router />
     </div>
