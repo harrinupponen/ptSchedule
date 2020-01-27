@@ -7,3 +7,4 @@ https://customerrest.herokuapp.com/api
 - React
 - Material-UI
 - With basic CRUD features
+- Firebase Google Authentication
